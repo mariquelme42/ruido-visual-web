@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Tipografías del manual de marca Ruido Visual */
+/* Nota: Epica Pro y Cardamon Italica son fuentes comerciales. 
+   Usando Crimson Text como alternativa similar a Epica Pro y Cormorant Garamond Italic como alternativa a Cardamon Italica */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+  --font-serif: 'Crimson Text', 'Crimson Pro', serif; /* Principal - Similar a Epica Pro */
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-accent: 'Cormorant Garamond', 'Lora', serif; /* Secundaria - Similar a Cardamon Italica */
+}
+
+body {
+  font-family: var(--font-sans);
+}
