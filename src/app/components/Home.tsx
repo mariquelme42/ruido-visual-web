@@ -331,7 +331,7 @@ const featuredBooks = [
     title: "Nunca tuve un título",
     author: "Ruido Visual",
     year: "2025",
-    cover: "/images/library/nunca-tuve.jpeg",
+    cover: "/images/library/nunca-tuve.png",
     pdf: "/pdfs/nunca-tuve.pdf",
   },
   {
@@ -347,7 +347,7 @@ const featuredBooks = [
     title: "Atajame un ratito esta desaparición",
     author: "Miel",
     year: "2025",
-    cover: "/images/library/atajame-un-ratito.jpeg",
+    cover: "/images/library/atajame-un-ratito.png",
     pdf: "/pdfs/atajame-un-ratito.pdf",
   },
 ];

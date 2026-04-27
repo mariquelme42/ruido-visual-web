@@ -13,7 +13,7 @@ export function Header() {
   };
 
   const navItems = [
-    { path: "/", label: "Inicio" },
+    { path: "/ruido-visual", label: "Inicio" },
     { path: "/acerca", label: "Acerca" },
     { path: "/biblioteca", label: "Biblioteca" },
     { path: "/galeria", label: "Galería" },
@@ -30,9 +30,9 @@ export function Header() {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-8">
           <Link
-            to="/"
+            to="/ruido-visual"
             className="group flex-shrink-0"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <motion.div
               className="relative flex items-center"
@@ -56,7 +56,16 @@ export function Header() {
 
           <nav className="hidden md:flex gap-8 lg:gap-10 items-center">
             {navItems.map((item) => (
-              <Link key={item.path} to={item.path} className="relative group">
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => {
+                  if (item.path === "/ruido-visual") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
+                className="relative group"
+              >
                 <span
                   className={`text-sm tracking-wide transition-colors ${
                     isActive(item.path)
@@ -131,7 +140,13 @@ export function Header() {
                     >
                       <Link
                         to={item.path}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => {
+                          setMobileMenuOpen(false);
+
+                          if (item.path === "/ruido-visual") {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }}
                         className={`block px-4 py-4 transition-all duration-300 ${
                           isActive(item.path)
                             ? "bg-foreground text-background"
@@ -164,14 +179,7 @@ export function Header() {
                       href="mailto:contacto@ruidovisual.org"
                       className="block text-sm hover:text-primary transition-colors"
                     >
-                      contacto@ruidovisual.org
-                    </a>
-
-                    <a
-                      href="mailto:convocatorias@ruidovisual.org"
-                      className="block text-sm hover:text-primary transition-colors"
-                    >
-                      convocatorias@ruidovisual.org
+                      ruidovisual25@gmail.com
                     </a>
                   </div>
                 </motion.div>

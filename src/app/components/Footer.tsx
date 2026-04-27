@@ -33,7 +33,7 @@ export function Footer() {
               </h4>
               <nav className="space-y-3">
                 {[
-                  { path: "/", label: "Inicio" },
+                  { path: "/ruido-visual", label: "Inicio" },
                   { path: "/acerca", label: "Acerca" },
                   { path: "/biblioteca", label: "Biblioteca" },
                   { path: "/galeria", label: "Galería" },
@@ -42,6 +42,11 @@ export function Footer() {
                   <Link
                     key={item.path}
                     to={item.path}
+                    onClick={() => {
+                      if (item.path === "/ruido-visual") {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
                     className="block text-sm hover:text-primary transition-colors duration-300"
                   >
                     {item.label}
