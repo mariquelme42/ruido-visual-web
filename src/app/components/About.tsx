@@ -30,21 +30,15 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2
-              className="text-3xl md:text-4xl mb-8 tracking-tight"
-              style={{ fontFamily: 'var(--font-serif)' }}
-            >
-              ¿Qué es Ruido Visual?
-            </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p className="text-muted-foreground">
-                Ruido Visual es una red editorial colectiva, independiente y autogestionada.
+                 Somos una red editorial colectiva, independiente y autogestionada.
               </p>
               <p className="text-muted-foreground">
                 Ruido visual es un espacio de creación compartida, apoyo mutuo y publicación colectiva, que busca abrir caminos para escritoras y escritores contemporáneos de Paraguay que no encuentran espacio en estructuras editoriales tradicionales.
               </p>
               <p className="text-muted-foreground">
-                Ruido Visual es un archivo de voces, un espacio de memoria y un lugar para obras
+                Este es un archivo de voces, un espacio de memoria y un lugar para obras
                 futuras. Es un laboratorio donde convergen la experimentación literaria, la amistad
                 creativa y el compromiso artístico.
               </p>
@@ -64,8 +58,7 @@ export function About() {
               style={{ fontFamily: 'var(--font-accent)' }}
             >
               "Nuestro proceso editorial es colaborativo, horizontal y sostenido por la confianza,
-              la amistad y el compromiso artístico. No somos una empresa. Somos una comunidad de
-              creadores."
+              la amistad y el compromiso artístico."
             </blockquote>
           </motion.section>
 
@@ -135,8 +128,7 @@ export function About() {
               </p>
               <p className="text-muted-foreground">
                 No buscamos el éxito comercial ni la validación de las instituciones
-                tradicionales. Buscamos crear espacios donde la palabra se convierta en acto de
-                resistencia, donde la escritura sea una forma de habitar el mundo juntos.
+                tradicionales. Buscamos crear espacios donde la palabra sea una forma de habitar el mundo juntos.
               </p>
             </div>
           </motion.section>

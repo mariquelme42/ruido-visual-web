@@ -51,43 +51,218 @@ export function Gallery() {
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1619320669563-92aeccfc4d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kcyUyMGhvbGRpbmclMjBwcmludGVkJTIwY2FyZHMlMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Taller de escritura colectiva",
+    src: "/images/gallery/galeria-01.png",
+    caption: "galeria-01",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1624954045119-097484c3db42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmFsb2clMjBwaG90b2dyYXBoeSUyMG5hdHVyZSUyMHRleHR1cmV8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Naturaleza y palabra",
+    src: "/images/gallery/galeria-03.png",
+    caption: "galeria-03",
     tall: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1617380607001-2797ed957a6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmludGVkJTIwcGFwZXIlMjBlZGl0b3JpYWwlMjBvYmplY3RzfGVufDF8fHx8MTc3MjkxMDg2M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Proceso editorial",
+    src: "/images/gallery/galeria-02.png",
+    caption: "galeria-02",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1650513973625-2abc0854814c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYm9va3MlMjBsaWJyYXJ5JTIwYXJjaGl2ZXxlbnwxfHx8fDE3NzI5MTA4NjN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Archivo de publicaciones",
+    src: "/images/gallery/galeria-04.webp",
+    caption: "galeria-04",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1713257510109-4cbfec05ff1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5hdHVyZSUyMG1pbmltYWwlMjB0ZXh0dXJlfGVufDF8fHx8MTc3MjkxMDg2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Texturas visuales",
+    src: "/images/gallery/galeria-09.webp",
+    caption: "galeria-09",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1738441639602-f6f2ff69a814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZGl0b3JpYWwlMjB3b3Jrc3BhY2UlMjB3cml0aW5nJTIwZGVza3xlbnwxfHx8fDE3NzI5MTA4NjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Espacio de trabajo",
+    src: "/images/gallery/galeria-07.webp",
+    caption: "galeria-07",
     tall: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1681684563154-798e01d10fe9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnQlMjBnYWxsZXJ5JTIwY29udGVtcG9yYXJ5JTIwbWluaW1hbHxlbnwxfHx8fDE3NzI5MTA4NjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Presentación de libro",
+    src: "/images/gallery/galeria-06.webp",
+    caption: "galeria-06",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1598738865218-7809c17181c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcGVuJTIwYm9vayUyMHJlYWRpbmclMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    caption: "Lectura compartida",
+    src: "/images/gallery/galeria-08.webp",
+    caption: "galeria-08",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-05.webp",
+    caption: "galeria-05",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-10.jpg",
+    caption: "galeria-10",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-11.png",
+    caption: "galeria-11",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-12.webp",
+    caption: "galeria-12",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-13.webp",
+    caption: "galeria-13",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-16.jpg",
+    caption: "galeria-16",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-14.webp",
+    caption: "galeria-14",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-15.jpg",
+    caption: "galeria-15",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-17.jpg",
+    caption: "galeria-17",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-18.jpg",
+    caption: "galeria-18",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-23.jpg",
+    caption: "galeria-23",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-20.jpg",
+    caption: "galeria-20",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-21.jpg",
+    caption: "galeria-21",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-22.jpg",
+    caption: "galeria-22",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-19.jpg",
+    caption: "galeria-19",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-24.jpg",
+    caption: "galeria-24",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-25.jpg",
+    caption: "galeria-25",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-26.webp",
+    caption: "galeria-26",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-27.webp",
+    caption: "galeria-27",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-28.webp",
+    caption: "galeria-28",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-29.webp",
+    caption: "galeria-29",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-30.webp",
+    caption: "galeria-30",
+    tall: false,
+  },
+   {
+    src: "/images/gallery/galeria-31.webp",
+    caption: "galeria-31",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-32.webp",
+    caption: "galeria-32",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-33.webp",
+    caption: "galeria-33",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-34.webp",
+    caption: "galeria-34",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-35.webp",
+    caption: "galeria-35",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-36.webp",
+    caption: "galeria-36",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-37.webp",
+    caption: "galeria-37",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-38.webp",
+    caption: "galeria-38",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-39.webp",
+    caption: "galeria-39",
+    tall: true,
+  },
+  {
+    src: "/images/gallery/galeria-43.jpeg",
+    caption: "galeria-43",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-40.jpeg",
+    caption: "galeria-40",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-41.jpeg",
+    caption: "galeria-41",
+    tall: false,
+  },
+  {
+    src: "/images/gallery/galeria-42.jpeg",
+    caption: "galeria-42",
     tall: false,
   },
 ];

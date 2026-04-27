@@ -17,7 +17,7 @@ export function Header() {
     { path: "/acerca", label: "Acerca" },
     { path: "/biblioteca", label: "Biblioteca" },
     { path: "/galeria", label: "Galería" },
-    { path: "/convocatorias", label: "Convocatorias" },
+    /*{ path: "/convocatorias", label: "Convocatorias" },*/
   ];
 
   return (
@@ -40,9 +40,9 @@ export function Header() {
               transition={{ duration: 0.2 }}
             >
               <img
-                src="/logo.png"
+                src="/logo.svg"
                 alt="Ruido Visual"
-                className="h-16 md:h-20 lg:h-24 w-auto object-contain"
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
               />
 
               <motion.div

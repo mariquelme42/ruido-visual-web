@@ -76,29 +76,18 @@ export function PublicationDetail() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-6">
-              <button className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-                <BookOpen className="w-4 h-4" />
-                Leer en línea
-              </button>
-              <button className="inline-flex items-center gap-2 px-6 py-3 border border-border hover:bg-secondary/50 transition-colors">
+              <a
+                href={publication.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
                 <Download className="w-4 h-4" />
-                Descargar PDF
-              </button>
+                Leer / Descargar
+              </a>
             </div>
           </div>
         </div>
-
-        {/* Reading Section */}
-        <section className="max-w-3xl mx-auto mb-16 py-12 border-t border-border">
-          <h2 className="text-2xl mb-8" style={{ fontFamily: 'var(--font-serif)' }}>
-            Fragmento
-          </h2>
-          <div className="prose prose-lg max-w-none space-y-4 text-muted-foreground leading-relaxed">
-            {publication.excerpt.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
 
         {/* Related Publications */}
         {relatedPublications.length > 0 && (
@@ -133,139 +122,303 @@ export function PublicationDetail() {
 
 const publications = [
   {
-    id: "voces-del-silencio",
-    title: "Voces del silencio",
-    author: "María Rodríguez",
+    id: "el-bulbo-raquideo",
+    title: "El bulbo raquídeo está indefinido en intelección",
+    author: "Andrés Cañete",
+    year: "2024",
+    type: "Poesía",
+    collection: "Ruido Visual",
+    cover: "/images/library/el-bulbo-raquideo.png",
+    pdf: "/pdfs/el-bulbo-raquideo.pdf",
+    description:
+      "Un viaje a través de la búsqueda de la voz poética entre una infinidad de delirios, entre la realidad y el plano metafísico. Una visión absoluta y aterrizada en el plano concreto, representado en espacios urbanos como el parque Carlos Antonio López y la Facultad de Filosofía en Sajonia.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "croissant-tete",
+    title: "Croissant/Teté con Pan",
+    author: "Ale Canclini",
     year: "2025",
     type: "Poesía",
-    collection: "Resonancias Urbanas",
-    cover:
-      "https://images.unsplash.com/photo-1650513973625-2abc0854814c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYm9va3MlMjBsaWJyYXJ5JTIwYXJjaGl2ZXxlbnwxfHx8fDE3NzI5MTA4NjN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    collection: "Ruido Visual",
+    cover: "/images/library/croissant-tete.png",
+    pdf: "/pdfs/croissant-tete.pdf",
     description:
-      "Una exploración poética del silencio urbano, de las voces que habitan los espacios vacíos de la ciudad. Este libro es un mapa de ausencias, un registro de lo que permanece cuando todo ha terminado.",
+      "«Mi problema no es económico, es estructural y sistémico», a veces croissant, otras teté con pan. En nuestra contradictoria realidad, danzan dialécticos conceptos: el orden y el caos. Entre el quehacer y el trabajo, en medio de la elaboración y el cumplimiento de la lista de pendientes, sobrevive la poesía.",
     excerpt: [
-      "El silencio tiene voces propias. Hablan en las esquinas vacías, en los parques al amanecer, en las calles que el olvido ha reclamado como suyas.",
-      "He aprendido a escuchar lo que no se dice, a leer los gestos que quedan suspendidos en el aire como preguntas sin respuesta.",
-      "La ciudad es un palimpsesto de silencios. Cada capa oculta historias que esperan ser descubiertas, voces que se niegan a desaparecer completamente.",
+      "",
     ],
   },
   {
-    id: "fragmentos-urbanos",
-    title: "Fragmentos urbanos",
-    author: "Carlos Mendoza",
+    id: "atajame-un-ratito",
+    title: "Atajame un ratito esta desaparición",
+    author: "Miel",
     year: "2025",
-    type: "Narrativa",
-    collection: "Territorios",
-    cover:
-      "https://images.unsplash.com/photo-1617380607001-2797ed957a6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmludGVkJTIwcGFwZXIlMjBlZGl0b3JpYWwlMjBvYmplY3RzfGVufDF8fHx8MTc3MjkxMDg2M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    type: "Poesía",
+    collection: "Ruido Visual",
+    cover: "/images/library/atajame-un-ratito.jpeg",
+    pdf: "/pdfs/atajame-un-ratito.pdf",
     description:
-      "Relatos breves que capturan momentos fugaces de la vida urbana contemporánea. Una colección de fragmentos que, juntos, forman un retrato colectivo de nuestro tiempo.",
+      "Entre retratos de las sutiles y mágicas cotidianidades (la mística de las masitas, los graffitis furiosos, el extenso repertorio de valsecitos peruanos), el poemario, poema, verso de la hija del asfalto sobreviene al temor de que todo desaparezca.",
     excerpt: [
-      "La ciudad se construye en fragmentos. Nadie la conoce completa. Cada quien habita su propia versión, su propio recorrido, su mapa personal de calles y memorias.",
-      "En el metro, los cuerpos se tocan sin mirarse. Es una coreografía involuntaria, un ballet de desconocidos que comparten espacio pero nunca historia.",
-      "Me pregunto cuántas versiones de esta ciudad existen. Tantas como habitantes, supongo. Y todas son reales, todas son verdaderas.",
+      "",
     ],
   },
   {
-    id: "memoria-liquida",
-    title: "Memoria líquida",
-    author: "Ana López",
-    year: "2024",
-    type: "Ensayo",
-    collection: "Pensamientos",
-    cover:
-      "https://images.unsplash.com/photo-1713257510109-4cbfec05ff1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5hdHVyZSUyMG1pbmltYWwlMjB0ZXh0dXJlfGVufDF8fHx8MTc3MjkxMDg2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    id: "nunca-tuve-un-titulo",
+    title: "Nunca tuve un título",
+    author: "Ruido Visual",
+    year: "2025",
+    type: "Poesía",
+    collection: "Ruido Visual",
+    cover: "/images/library/nunca-tuve.jpeg",
+    pdf: "/pdfs/nunca-tuve.pdf",
     description:
-      "Un ensayo sobre la naturaleza fluida de la memoria en la era digital. ¿Qué significa recordar cuando todo está disponible pero nada permanece?",
+      "Bajo la consigna de la ausencia surgen varios poemas. La palabra sirve para nombrar aquello que nunca tuvimos. La palabra, en el mejor de los casos, es lo que todavía nos queda, y lo que siempre tuvimos.",
     excerpt: [
-      "La memoria ya no es sólida. Se ha vuelto líquida, fluida, adaptable. Se transforma con cada evocación, se reconstruye en cada acto de recordar.",
-      "Vivimos en la paradoja de tener acceso a toda la información y al mismo tiempo olvidar más rápido que nunca. Los archivos digitales prometen permanencia, pero la atención se ha vuelto efímera.",
-      "¿Qué recordaremos de este tiempo? No lo que guardamos, sino lo que sentimos. La memoria emocional resiste donde la información se disuelve.",
+      "",
     ],
   },
   {
-    id: "cartografia-intima",
-    title: "Cartografía íntima",
-    author: "Laura Jiménez",
+    id: "1989",
+    title: "1989",
+    author: "Amigues ruidoses",
+    year: "2025",
+    type: "Cómic",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/1989.png",
+    pdf: "/pdfs/amigues/1989.pdf",
+    description:
+      "Un viaje a través de la búsqueda de la voz poética entre una infinidad de delirios, entre la realidad y el plano metafísico. Una visión absoluta y aterrizada en el plano concreto, representado en espacios urbanos como el parque Carlos Antonio López y la Facultad de Filosofía en Sajonia.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "aracnida",
+    title: "Arácnida",
+    author: "Ara Franco",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/aracnida.png",
+    pdf: "/pdfs/amigues/aracnida.pdf",
+    description:
+      "La poesía se desarrolla en un plano bidimensional: la realidad se reinterpreta para hacerse símbolo; el símbolo, asimismo, se construye para entretejer nuevas realidades.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "consuelo-querido",
+    title: "Consuelo, querido.",
+    author: "Lucas Vega",
+    year: "2026",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/consuelo-querido.png",
+    pdf: "/pdfs/amigues/consuelo-querido.pdf",
+    description:
+      "Un poemario sobre la intimidad expuesta, la ternura insistente y el miedo a perder aquello que nos constituye. Un intento de consuelo. Guardar mensajes, amistades, cuerpos y domingos como quien guarda pruebas de haber sentido algo. Escribir es insistir, recordar, exponerse.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "decadance",
+    title: "Decadance",
+    author: "Norma Flores Allende",
+    year: "2025",
+    type: "Fanzine",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/decadance.png",
+    pdf: "/pdfs/amigues/decadance.pdf",
+    description:
+      "Las distintas tipografías, el género periodístico y los diversos géneros literarios danzan en este contrapunto de clases sociales, una realidad en decadencia con escenario en Paraguay. ",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "el-ultimo-tren",
+    title: "El último Areguá",
+    author: "Ara Franco",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/el-ultimo-tren.png",
+    pdf: "/pdfs/amigues/el-ultimo-tren.pdf",
+    description:
+      "¿Qué es el tiempo? Esta y otras preguntas surgen en lo cotidiano, en el ir y venir en colectivo. Entre el cansancio del trabajo, las miradas extrañas, los amores pasajeros, se vislumbran posibles respuestas. ",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "esculturas-retoricas",
+    title: "Esculturas retóricas",
+    author: "Andrés Cañete",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/esculturas-retoricas.png",
+    pdf: "/pdfs/amigues/esculturas-retoricas.pdf",
+    description:
+      "La contemporaneidad es versificada desde la reinterpretación de la tradición poética (Marina Tsvietáieva, Walter Scott, Nicolás Guillén, César Vallejo, Dylan Thomas, William Faulkner, Sor Juana, Arthur Rimbaud, Walt Whitman y un largo etcétera). De esta reinterpretación surgen nuevos versos, nuevas preguntas y respuestas. Versos bolañescos y baudelarianos construyen una nueva arte poética nacida en las meditaciones de lo urbano. ",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "jalea-real",
+    title: "Jalea Real",
+    author: "Luiz Brizuela",
     year: "2024",
     type: "Poesía",
-    collection: "Resonancias Urbanas",
-    cover:
-      "https://images.unsplash.com/photo-1619320669563-92aeccfc4d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kcyUyMGhvbGRpbmclMjBwcmludGVkJTIwY2FyZHMlMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/jalea-real.png",
+    pdf: "/pdfs/amigues/jalea-real.pdf",
     description:
-      "Poemas que trazan mapas del territorio emocional. Cada texto es una coordenada en el paisaje del afecto, el deseo y la pérdida.",
+      "Elementos formales de la naturaleza, así como datos científicos, son llevados a un análisis concreto de la realidad extrapolado a la poesía. Son las abejas obreras las que lo producen todo, somos los trabajadores los que lo producimos todo, y nuestras historias están fotografiadas en estos poemas. ",
     excerpt: [
-      "Trazar mapas del cuerpo es una forma de habitar el mundo. Cada marca, cada cicatriz, es una ruta que conduce a algún lugar del pasado.",
-      "Hay geografías que solo existen en la memoria. Lugares que habitamos juntos y que desaparecieron cuando nos separamos.",
-      "El mapa íntimo no sigue las reglas de la cartografía convencional. Aquí, las distancias se miden en latidos, en suspiros, en palabras no dichas.",
+      "",
     ],
   },
   {
-    id: "territorios-rotos",
-    title: "Territorios rotos",
-    author: "Jorge Sánchez",
-    year: "2024",
-    type: "Narrativa",
-    collection: "Territorios",
-    cover:
-      "https://images.unsplash.com/photo-1624954045119-097484c3db42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmFsb2clMjBwaG90b2dyYXBoeSUyMG5hdHVyZSUyMHRleHR1cmV8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description:
-      "Historias de desplazamiento, migración y pertenencia. Narrativas que exploran qué significa habitar un territorio que ya no te reconoce.",
-    excerpt: [
-      "El territorio roto no se repara con mapas nuevos. La fractura permanece, visible o invisible, recordándonos que algo se perdió en el camino.",
-      "Cruzar la frontera no es solo un acto físico. Es dejar atrás una versión de ti mismo y no saber quién serás del otro lado.",
-      "Los territorios rotos generan nuevas formas de habitar el mundo. En las grietas crecen otras posibilidades, otras formas de ser.",
-    ],
-  },
-  {
-    id: "resonancias",
-    title: "Resonancias",
-    author: "Patricia Vega",
-    year: "2023",
+    id: "kotydiano",
+    title: "Kotydiano",
+    author: "Ara Franco",
+    year: "2025",
     type: "Poesía",
-    collection: "Resonancias Urbanas",
-    cover:
-      "https://images.unsplash.com/photo-1738441639602-f6f2ff69a814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZGl0b3JpYWwlMjB3b3Jrc3BhY2UlMjB3cml0aW5nJTIwZGVza3xlbnwxfHx8fDE3NzI5MTA4NjR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/kotydiano.png",
+    pdf: "/pdfs/amigues/kotydiano.pdf",
     description:
-      "Poesía que explora las resonancias entre el sonido y el silencio, entre la palabra dicha y la que permanece suspendida.",
+      "Suma de los términos 'cotidiano' y 'koty' (guaraní. pieza, habitación), complementación entre lo que nace desde lo íntimo para ser expuesto hacia afuera. La poesía es incontenible y busca escaparse de lo secreto, busca expandirse.",
     excerpt: [
-      "Las palabras resuenan mucho después de ser pronunciadas. Vibran en el aire, en la memoria, en el espacio entre nosotros.",
-      "Hay silencios que hablan más fuerte que cualquier discurso. Son resonancias invertidas, ecos de lo que nunca se dijo.",
-      "Escribir es crear resonancias. Palabras que vibran juntas, que se responden unas a otras a través del tiempo y el espacio.",
+      "",
     ],
   },
   {
-    id: "tiempo-suspendido",
-    title: "Tiempo suspendido",
-    author: "Roberto Martínez",
-    year: "2023",
-    type: "Ensayo",
-    collection: "Pensamientos",
-    cover:
-      "https://images.unsplash.com/photo-1681684563154-798e01d10fe9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnQlMjBnYWxsZXJ5JTIwY29udGVtcG9yYXJ5JTIwbWluaW1hbHxlbnwxfHx8fDE3NzI5MTA4NjV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    id: "la-domesticacion",
+    title: "La domesticación de los objetos salvajes",
+    author: "Luis Brizuela",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/la-domesticacion.png",
+    pdf: "/pdfs/amigues/la-domesticacion.pdf",
     description:
-      "Reflexiones sobre la experiencia del tiempo en momentos de crisis. ¿Qué ocurre cuando el tiempo se detiene y todo parece suspendido?",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor arcu eget odio placerat, sed consequat sapien elementum. Proin venenatis non mi ultricies congue. Integer mattis sapien felis, in rhoncus odio dapibus ac. Ut nec diam quis nisi viverra posuere. Cras egestas volutpat accumsan. Phasellus dapibus tellus vitae bibendum aliquet. Mauris non dui at justo consectetur tempor. Vestibulum ac imperdiet metus, eget iaculis sapien. Vivamus gravida eros augue, vel tempus turpis varius id.",
     excerpt: [
-      "El tiempo suspendido no es la ausencia de tiempo. Es otra temporalidad, una forma diferente de experimentar el presente.",
-      "En la suspensión, todo se vuelve posible y nada se concreta. Vivimos en el umbral, en el espacio entre lo que fue y lo que podría ser.",
-      "Aprendimos a habitar el tiempo suspendido. Ya no esperamos que las cosas vuelvan a la normalidad. Esta es la nueva forma de estar en el mundo.",
+      "",
     ],
   },
   {
-    id: "palabras-migrantes",
-    title: "Palabras migrantes",
-    author: "Carmen Ruiz",
-    year: "2023",
-    type: "Narrativa",
-    collection: "Territorios",
-    cover:
-      "https://images.unsplash.com/photo-1598738865218-7809c17181c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcGVuJTIwYm9vayUyMHJlYWRpbmclMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    id: "lineas-de-expresion",
+    title: "Líneas de expresión y otros fractales",
+    author: "Luis Brizuela",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/lineas-de-expresion.png",
+    pdf: "/pdfs/amigues/lineas-de-expresion.pdf",
     description:
-      "Historias de personas cuyas vidas están definidas por el movimiento, por la imposibilidad de permanecer. Palabras que viajan con ellas.",
+      "Contraposición o, más bien, contrapunto entre fotografía y poesía, entre la rigidez y premeditación de las estructuras métricas y los versos extendidos en libertad. Paisajes de la triple frontera Paraguay-Brasil-Argentina conversan con textos que diseccionan y analizan poéticamente la experiencia humana en sus diversas aristas. ",
     excerpt: [
-      "Las palabras también migran. Cruzan fronteras, cambian de significado, se adaptan a nuevos contextos. Como nosotros.",
-      "Hay palabras que solo existen en ciertos lugares. Cuando te vas, las llevas contigo, pero suenan diferente en otros oídos.",
-      "Ser migrante es habitar varios idiomas a la vez. No solo lenguas diferentes, sino formas distintas de nombrar el mundo.",
+      "",
+    ],
+  },
+  {
+    id: "memorias-del-planeta",
+    title: "Memorias del planeta extraño",
+    author: "Norma Flores Allende",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/memorias-del-planeta.png",
+    pdf: "/pdfs/amigues/memorias-del-planeta.pdf",
+    description:
+      "Memorias del Planeta Extraño reúne poesía y narrativa para dar voz al Universo, la humanidad, y en medio de ellos, al individuo que se debate entre la voluntad y la naturaleza implacable. ",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "plegaria-para-palestina",
+    title: "Plegaria para Palestina",
+    author: "Miguel Gil Castro",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/plegaria-para-palestina.png",
+    pdf: "/pdfs/amigues/plegaria-para-palestina.pdf",
+    description:
+      "Desde Lima hasta Asunción, en toda Abya Yala, en Asia Occidental (mal llamada “Medio Oriente”), en todo el sur, nos une una misma plegaria. ¡Palestina libre, desde el río hasta el mar!",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "piririta",
+    title: "Piririta - Antología Comunista Paraguaya",
+    author: "Amigues ruidoses",
+    year: "2024",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/piririta.png",
+    pdf: "/pdfs/amigues/piririta.pdf",
+    description:
+      "Una conversación colectiva a través de la creación poética. La antología se concreta como la confección oficial de esa conversación, la puesta en escena de textos poéticos y políticos que hablan entre sí permanentemente y que confrontan la idea de la individualidad abstraída de lo colectivo. ",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "tamucode",
+    title: "Tamucode - Crónicas de un Genocidio",
+    author: "Norma Flores Allende",
+    year: "2025",
+    type: "Cómic",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/tamucode.png",
+    pdf: "/pdfs/amigues/tamucode.pdf",
+    description:
+      "Este cómic de no ficción muestra cómo las diferentes instituciones del Estado paraguayo no tienen en cuenta la existencia de los grupos de Ayoreo en aislamiento al tiempo de legalizar la transformación del ecosistema chaqueño. Fue distinguido con el Premio Fundación Itaú de Periodismo Cultural 2025 otorgado en el marco del Roa Bastos Fest de El Otro País.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "un-tajo",
+    title: "Un tajo bastará",
+    author: "Lucas Vega",
+    year: "2026",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/un-tajo.png",
+    pdf: "/pdfs/amigues/un-tajo.pdf",
+    description:
+      "El cuerpo congestionado de poesía y cansancio se reconoce en la fragilidad. Del corte y la punción emanan los versos y el dolor. ¿Bastará la escritura para lograr la descongestión?",
+    excerpt: [
+      "",
+    ],
+  },
+  {
+    id: "veo-el-volcan",
+    title: "Veo el volcán que siempre se aleja",
+    author: "Norma Flores Allende",
+    year: "2025",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/veo-el-volcan.png",
+    pdf: "/pdfs/amigues/veo-el-volcan.pdf",
+    description:
+      "Un poemario para ejercitar la memoria, reflexionar en qué mundo hemos nacido, recuperar la historia, lo que es urgente en un país como Paraguay, donde no existió un profundo proceso de Juicio y Castigo a los torturadores y saqueadores de la tiranía stronista.",
+    excerpt: [
+      "",
     ],
   },
 ];

@@ -60,13 +60,14 @@ export function Home() {
               <span>Explorar biblioteca</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
+            {/*}
             <Link
               to="/convocatorias"
               className="inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 border-2 border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
               <Sparkles className="w-5 h-5" />
               <span>Convocatorias</span>
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </section>
@@ -108,7 +109,7 @@ export function Home() {
             transition={{ duration: 1 }}
           >
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1598738865218-7809c17181c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcGVuJTIwYm9vayUyMHJlYWRpbmclMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              src="/images/home/home-01.jpg"
               alt="Libro abierto"
               className="w-full h-full object-cover"
             />
@@ -139,7 +140,7 @@ export function Home() {
               <h2 className="text-4xl md:text-5xl mb-4" style={{ fontFamily: 'var(--font-serif)' }}>
                 Publicaciones recientes
               </h2>
-              <p className="text-muted-foreground">Explora nuestra colección editorial</p>
+              <p className="text-muted-foreground">Explorá nuestra colección editorial</p>
             </div>
             <Link
               to="/biblioteca"
@@ -226,8 +227,8 @@ export function Home() {
             >
               <Link to="/galeria" className="block group relative overflow-hidden aspect-[4/3]">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1619320669563-92aeccfc4d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW5kcyUyMGhvbGRpbmclMjBwcmludGVkJTIwY2FyZHMlMjBwb2V0cnl8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Manos sosteniendo tarjetas"
+                  src="/images/gallery/galeria-03.png"
+                  alt="galeria-03"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-500" />
@@ -242,8 +243,8 @@ export function Home() {
             >
               <Link to="/galeria" className="block group relative overflow-hidden aspect-[4/3]">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1624954045119-097484c3db42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhbmFsb2clMjBwaG90b2dyYXBoeSUyMG5hdHVyZSUyMHRleHR1cmV8ZW58MXx8fHwxNzcyOTEwODYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Textura natural"
+                  src="/images/gallery/galeria-26.webp"
+                  alt="galeria-26"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-500" />
@@ -270,6 +271,7 @@ export function Home() {
       </section>
 
       {/* Open Calls Section - Card Style */}
+      {/*
       <section className="px-6 md:px-12 py-24">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -297,6 +299,7 @@ export function Home() {
           </motion.div>
         </div>
       </section>
+      */}
     </div>
   );
 }
@@ -324,27 +327,27 @@ const features = [
 
 const featuredBooks = [
   {
-    id: "voces-del-silencio",
-    title: "Voces del silencio",
-    author: "María Rodríguez",
+    id: "nunca-tuve-un-titulo",
+    title: "Nunca tuve un título",
+    author: "Ruido Visual",
     year: "2025",
-    cover:
-      "https://images.unsplash.com/photo-1650513973625-2abc0854814c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwYm9va3MlMjBsaWJyYXJ5JTIwYXJjaGl2ZXxlbnwxfHx8fDE3NzI5MTA4NjN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    cover: "/images/library/nunca-tuve.jpeg",
+    pdf: "/pdfs/nunca-tuve.pdf",
   },
   {
-    id: "fragmentos-urbanos",
-    title: "Fragmentos urbanos",
-    author: "Carlos Mendoza",
+    id: "croissant-tete",
+    title: "Croissant/Teté con Pan",
+    author: "Ale Canclini",
     year: "2025",
-    cover:
-      "https://images.unsplash.com/photo-1617380607001-2797ed957a6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmludGVkJTIwcGFwZXIlMjBlZGl0b3JpYWwlMjBvYmplY3RzfGVufDF8fHx8MTc3MjkxMDg2M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    cover: "/images/library/croissant-tete.png",
+    pdf: "/pdfs/croissant-tete.pdf",
   },
   {
-    id: "memoria-liquida",
-    title: "Memoria líquida",
-    author: "Ana López",
-    year: "2024",
-    cover:
-      "https://images.unsplash.com/photo-1713257510109-4cbfec05ff1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG5hdHVyZSUyMG1pbmltYWwlMjB0ZXh0dXJlfGVufDF8fHx8MTc3MjkxMDg2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    id: "atajame-un-ratito",
+    title: "Atajame un ratito esta desaparición",
+    author: "Miel",
+    year: "2025",
+    cover: "/images/library/atajame-un-ratito.jpeg",
+    pdf: "/pdfs/atajame-un-ratito.pdf",
   },
 ];

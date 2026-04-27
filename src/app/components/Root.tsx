@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { LoadingScreen } from "./LoadingScreen";
+import { ScrollToTop } from "./ScrollToTop";
 
 export function Root() {
   const [isLoading, setIsLoading] = useState(() => {
@@ -21,6 +22,7 @@ export function Root() {
     <>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       <div className="min-h-screen flex flex-col">
+        <ScrollToTop />
         <Header />
         <main className="flex-1">
           <Outlet />

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Mail, Instagram, Twitter, Heart } from "lucide-react";
+import { Mail, Instagram, Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -37,7 +37,7 @@ export function Footer() {
                   { path: "/acerca", label: "Acerca" },
                   { path: "/biblioteca", label: "Biblioteca" },
                   { path: "/galeria", label: "Galería" },
-                  { path: "/convocatorias", label: "Convocatorias" },
+                 /* { path: "/convocatorias", label: "Convocatorias" },*/
                 ].map((item) => (
                   <Link
                     key={item.path}
@@ -55,45 +55,24 @@ export function Footer() {
               <h4 className="text-xs uppercase tracking-widest mb-6 text-muted-foreground">
                 Conectá
               </h4>
-              <div className="space-y-4 mb-8">
+
+              <div className="flex flex-col gap-4">
                 <a
-                  href="mailto:contacto@ruidovisual.org"
-                  className="block text-sm hover:text-primary transition-colors duration-300"
-                >
-                  contacto@ruidovisual.org
-                </a>
-                <a
-                  href="mailto:convocatorias@ruidovisual.org"
-                  className="block text-sm hover:text-primary transition-colors duration-300"
-                >
-                  convocatorias@ruidovisual.org
-                </a>
-              </div>
-              <div className="flex gap-4">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="mailto:contacto@ruidovisual.org"
-                  className="text-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="Email"
+                  href="mailto:ruidovisual25@gmail.com"
+                  className="inline-flex items-center gap-3 text-sm hover:text-primary transition-colors duration-300"
                 >
                   <Mail className="w-5 h-5" />
+                  <span>ruidovisual25@gmail.com</span>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/ruidovisual.py/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-sm hover:text-primary transition-colors duration-300"
+                >
+                  <Instagram className="w-5 h-5" />
+                  <span>@ruidovisual.py</span>
                 </a>
               </div>
             </div>
@@ -102,7 +81,17 @@ export function Footer() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-foreground/10">
             <p className="text-xs text-muted-foreground text-center md:text-left">
-              © {new Date().getFullYear()} Ruido Visual — Todos los derechos reservados
+            © {new Date().getFullYear()} Ruido Visual
+              <span className="mx-2">·</span>
+              Hecho con ♥ por{" "}
+              <a
+                href="https://tu-link-aqui.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-foreground transition-colors"
+              >
+                María José
+              </a>
             </p>
           </div>
         </div>
