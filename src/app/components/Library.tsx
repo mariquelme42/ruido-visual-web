@@ -274,7 +274,7 @@ const books = [
     author: "Ruido Visual",
     year: "2025",
     type: "Fanzine",
-    cover: "/images/library/nunca-tuve.jpeg",
+    cover: "/images/library/nunca-tuve.png",
     pdf: "/pdfs/nunca-tuve.pdf",
   },
   {
@@ -292,7 +292,7 @@ const books = [
     author: "Miel",
     year: "2025",
     type: "Poesía",
-    cover: "/images/library/atajame-un-ratito.jpeg",
+    cover: "/images/library/atajame-un-ratito.png",
     pdf: "/pdfs/atajame-un-ratito.pdf",
   },
   {
@@ -379,7 +379,7 @@ const books = [
   {
     id: "la-domesticacion",
     title: "La domesticación de los objetos salvajes",
-    author: "Luis Brizuela",
+    author: "Luiz Brizuela",
     year: "2025",
     type: "Poesía",
     cover: "/images/library/amigues/la-domesticacion.png",
@@ -388,7 +388,7 @@ const books = [
   {
     id: "lineas-de-expresion",
     title: "Líneas de expresión y otros fractales",
-    author: "Luis Brizuela",
+    author: "Luiz Brizuela",
     year: "2025",
     type: "Poesía",
     cover: "/images/library/amigues/lineas-de-expresion.png",

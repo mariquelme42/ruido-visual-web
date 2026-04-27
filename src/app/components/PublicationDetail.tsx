@@ -125,7 +125,7 @@ const publications = [
     id: "el-bulbo-raquideo",
     title: "El bulbo raquídeo está indefinido en intelección",
     author: "Andrés Cañete",
-    year: "2024",
+    year: "202",
     type: "Poesía",
     collection: "Ruido Visual",
     cover: "/images/library/el-bulbo-raquideo.png",
@@ -158,7 +158,7 @@ const publications = [
     year: "2025",
     type: "Poesía",
     collection: "Ruido Visual",
-    cover: "/images/library/atajame-un-ratito.jpeg",
+    cover: "/images/library/atajame-un-ratito.png",
     pdf: "/pdfs/atajame-un-ratito.pdf",
     description:
       "Entre retratos de las sutiles y mágicas cotidianidades (la mística de las masitas, los graffitis furiosos, el extenso repertorio de valsecitos peruanos), el poemario, poema, verso de la hija del asfalto sobreviene al temor de que todo desaparezca.",
@@ -173,7 +173,7 @@ const publications = [
     year: "2025",
     type: "Poesía",
     collection: "Ruido Visual",
-    cover: "/images/library/nunca-tuve.jpeg",
+    cover: "/images/library/nunca-tuve.png",
     pdf: "/pdfs/nunca-tuve.pdf",
     description:
       "Bajo la consigna de la ausencia surgen varios poemas. La palabra sirve para nombrar aquello que nunca tuvimos. La palabra, en el mejor de los casos, es lo que todavía nos queda, y lo que siempre tuvimos.",
@@ -191,7 +191,7 @@ const publications = [
     cover: "/images/library/amigues/1989.png",
     pdf: "/pdfs/amigues/1989.pdf",
     description:
-      "Un viaje a través de la búsqueda de la voz poética entre una infinidad de delirios, entre la realidad y el plano metafísico. Una visión absoluta y aterrizada en el plano concreto, representado en espacios urbanos como el parque Carlos Antonio López y la Facultad de Filosofía en Sajonia.",
+      "Cómic de ficción histórica que muestra el viaje de introspección de Arami Romero, que le ayudará a entender tanto su pasado como el de la sociedad que la rodea. Ella, periodista, a través de sus investigaciones, descubre las historias de desaparecidos del Plan Cóndor, para revelar la atmósfera de terrorismo de Estado que envolvía a países como Paraguay, Argentina, Uruguay y otros en Latinoamérica. Las diferentes historias convergen en una serie de revelaciones sobre el impacto de crecer en sociedades que aún no han podido sanar su pasado reciente.",
     excerpt: [
       "",
     ],
@@ -304,14 +304,14 @@ const publications = [
   {
     id: "la-domesticacion",
     title: "La domesticación de los objetos salvajes",
-    author: "Luis Brizuela",
+    author: "Luiz Brizuela",
     year: "2025",
     type: "Poesía",
     collection: "Amigues ruidoses",
     cover: "/images/library/amigues/la-domesticacion.png",
     pdf: "/pdfs/amigues/la-domesticacion.pdf",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor arcu eget odio placerat, sed consequat sapien elementum. Proin venenatis non mi ultricies congue. Integer mattis sapien felis, in rhoncus odio dapibus ac. Ut nec diam quis nisi viverra posuere. Cras egestas volutpat accumsan. Phasellus dapibus tellus vitae bibendum aliquet. Mauris non dui at justo consectetur tempor. Vestibulum ac imperdiet metus, eget iaculis sapien. Vivamus gravida eros augue, vel tempus turpis varius id.",
+      "«Los objetos salvajes deambulan hambrientos de nostalgia humana», allí asiste el ojo clínico, el ojo quirúrgico, para dar un nuevo nombre y una nueva descripción de lo existente, para traducir los objetos a la lengua de la poesía. «Posar la mirada es existir».",
     excerpt: [
       "",
     ],
@@ -319,7 +319,7 @@ const publications = [
   {
     id: "lineas-de-expresion",
     title: "Líneas de expresión y otros fractales",
-    author: "Luis Brizuela",
+    author: "Luiz Brizuela",
     year: "2025",
     type: "Poesía",
     collection: "Amigues ruidoses",

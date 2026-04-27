@@ -57,8 +57,8 @@ export function About() {
               className="text-3xl md:text-4xl leading-relaxed"
               style={{ fontFamily: 'var(--font-accent)' }}
             >
-              "Nuestro proceso editorial es colaborativo, horizontal y sostenido por la confianza,
-              la amistad y el compromiso artístico."
+              Nuestro proceso editorial es colaborativo, horizontal y sostenido por la confianza,
+              la amistad y el compromiso artístico.
             </blockquote>
           </motion.section>
 
@@ -162,11 +162,11 @@ export function About() {
               className="text-3xl md:text-4xl mb-6"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
-              Únete a nuestra red
+              Sumate a nuestra red
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Si te identificas con nuestra visión y quieres formar parte de este proyecto
-              colectivo, escríbenos.
+              Si te identificás con nuestra visión y querés formar parte de este proyecto
+              colectivo, escribinos.
             </p>
             <a
               href="mailto:contacto@ruidovisual.org"

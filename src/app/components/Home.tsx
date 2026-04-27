@@ -119,8 +119,8 @@ export function Home() {
                 className="text-3xl md:text-5xl text-background leading-tight max-w-3xl"
                 style={{ fontFamily: 'var(--font-accent)' }}
               >
-                "El proceso editorial es colaborativo, horizontal y sostenido por la confianza, la
-                amistad y el compromiso artístico."
+                El proceso editorial es colaborativo, horizontal y sostenido por la confianza, la
+                amistad y el compromiso artístico.
               </p>
             </div>
           </motion.div>
@@ -307,7 +307,7 @@ export function Home() {
 const features = [
   {
     icon: <Users className="w-8 h-8 text-primary" />,
-    title: "Colaborativo",
+    title: "Colaborativa",
     description:
       "Trabajamos juntos, sin jerarquías. Cada proyecto es un esfuerzo compartido donde las decisiones se toman colectivamente.",
   },
