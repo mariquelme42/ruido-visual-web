@@ -125,7 +125,7 @@ const publications = [
     id: "el-bulbo-raquideo",
     title: "El bulbo raquídeo está indefinido en intelección",
     author: "Andrés Cañete",
-    year: "202",
+    year: "2025",
     type: "Poesía",
     collection: "Ruido Visual",
     cover: "/images/library/el-bulbo-raquideo.png",

@@ -145,8 +145,8 @@ export function About() {
               className="text-3xl md:text-5xl leading-tight max-w-4xl mx-auto"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
-              "Un espacio donde la palabra se convierte en acto de resistencia, donde la escritura
-              es una forma de habitar el mundo juntos."
+              Un espacio donde la palabra se convierte en acto de resistencia, donde la escritura
+              es una forma de habitar el mundo juntos.
             </blockquote>
           </motion.section>
 
