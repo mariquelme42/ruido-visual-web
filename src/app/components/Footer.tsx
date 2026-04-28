@@ -1,7 +1,11 @@
 import { Link } from "react-router";
 import { Mail, Instagram, Heart } from "lucide-react";
+import { useState } from "react";
+import DonationModal from "./DonationModal";
 
 export function Footer() {
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
+
   return (
     <footer className="border-t border-foreground/20 bg-background">
       <div className="px-6 md:px-12 py-16 md:py-20">
@@ -15,15 +19,14 @@ export function Footer() {
                 Red editorial colectiva, independiente y autogestionada. Un espacio de creación
                 compartida y publicación libre.
               </p>
-              <a
-                href="https://ko-fi.com/ruidovisual"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => setIsDonationModalOpen(true)}
                 className="inline-flex items-center gap-2 px-6 py-3 border-2 border-foreground bg-background hover:bg-foreground hover:text-background transition-all duration-300 text-sm"
               >
                 <Heart className="w-4 h-4" />
                 Apoyar con una donación
-              </a>
+              </button>
             </div>
 
             {/* Navigation */}
@@ -101,6 +104,10 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <DonationModal
+        isOpen={isDonationModalOpen}
+        onClose={() => setIsDonationModalOpen(false)}
+      />
     </footer>
   );
 }

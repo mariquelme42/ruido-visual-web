@@ -12,15 +12,13 @@ import { ComingSoon } from "./components/ComingSoon";
 export const router = createBrowserRouter([
   {
     path: "/",
+    Component: ComingSoon,
+  },
+  {
+    path: "/",
     Component: Root,
     children: [
-      // 👇 NUEVO: página principal del dominio
-      { index: true, Component: ComingSoon },
-
-      // 👇 NUEVO: acceso a Ruido Visual
       { path: "ruido-visual", Component: Home },
-
-      // 👇 TODO LO DEMÁS IGUAL
       { path: "acerca", Component: About },
       { path: "biblioteca", Component: Library },
       { path: "biblioteca/:id", Component: PublicationDetail },

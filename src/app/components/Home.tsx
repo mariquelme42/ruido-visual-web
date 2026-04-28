@@ -2,8 +2,17 @@ import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Users, Sparkles } from "lucide-react";
+import { useEffect } from "react";
 
 export function Home() {
+    useEffect(() => {
+    document.title = "Ruido Visual";
+
+    const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
+    if (favicon) {
+      favicon.href = "/favicon-ruido.png";
+    }
+  }, []);
   return (
     <div className="relative">
       {/* Hero Section with Noise Effect */}
