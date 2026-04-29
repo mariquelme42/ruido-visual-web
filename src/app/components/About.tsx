@@ -169,7 +169,7 @@ export function About() {
               colectivo, escribinos.
             </p>
             <a
-              href="mailto:contacto@ruidovisual.org"
+              href="mailto:ruidovisual25@gmail.com"
               className="inline-block px-10 py-5 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 text-lg"
             >
               Contacto

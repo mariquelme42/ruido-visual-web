@@ -176,7 +176,7 @@ export function Header() {
 
                   <div className="space-y-3">
                     <a
-                      href="mailto:contacto@ruidovisual.org"
+                      href="mailto:ruido-visual25@gmail.com"
                       className="block text-sm hover:text-primary transition-colors"
                     >
                       ruidovisual25@gmail.com
