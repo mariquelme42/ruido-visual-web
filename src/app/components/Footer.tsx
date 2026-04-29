@@ -93,12 +93,12 @@ export function Footer() {
               <span className="mx-2">·</span>
               Hecho con ♥ por{" "}
               <a
-                href="https://tu-link-aqui.com"
+                href="https://de-construccion.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 hover:text-foreground transition-colors"
               >
-                María José
+                MJ
               </a>
             </p>
           </div>
