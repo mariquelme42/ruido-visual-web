@@ -339,7 +339,7 @@ const featuredBooks = [
     id: "nunca-tuve-un-titulo",
     title: "Nunca tuve un título",
     author: "Ruido Visual",
-    year: "2025",
+    year: "2026",
     cover: "/images/library/nunca-tuve.png",
     pdf: "/pdfs/nunca-tuve.pdf",
   },
