@@ -6,6 +6,12 @@ import DonationModal from "./DonationModal";
 export function Footer() {
   const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
+  const scrollToTop = () => {
+    window.setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, 0);
+  };
+
   return (
     <footer className="border-t border-foreground/20 bg-background">
       <div className="px-6 md:px-12 py-16 md:py-20">
@@ -40,17 +46,13 @@ export function Footer() {
                   { path: "/acerca", label: "Acerca" },
                   { path: "/biblioteca", label: "Biblioteca" },
                   { path: "/galeria", label: "Galería" },
-                 /* { path: "/convocatorias", label: "Convocatorias" },*/
+                  { path: "/convocatorias", label: "Convocatorias" },
                 ].map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
-                    onClick={() => {
-                      if (item.path === "/ruido-visual") {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                    }}
-                    className="block text-sm hover:text-primary transition-colors duration-300"
+                    onClick={scrollToTop}
+                    className="block py-1 text-sm hover:text-primary transition-colors duration-300"
                   >
                     {item.label}
                   </Link>

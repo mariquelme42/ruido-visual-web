@@ -1,205 +1,446 @@
-import { useState } from "react";
-import { Download } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import type { ChangeEvent, FormEvent, MouseEvent, ReactNode } from "react";
+import { Download, Send, X } from "lucide-react";
+import { setPageSeo } from "../utils/seo";
+
+const FORM_NAME = "convocatoria-ruido-visual-2026";
+const MAX_FILE_SIZE = 8 * 1024 * 1024;
+const COVER_IMAGE = "/images/convocatorias/convocatoria-0.jpeg";
+const BASES_PDF =
+  "/pdfs/convocatorias/convocatoria-externa-ruido-visual-bases-y-condiciones.pdf";
+
+const introText =
+  "Ruido Visual es una editorial independiente, colectiva y autogestionada que surge en el contexto de pocas oportunidades para la difusión de literatura paraguaya. Tomamos el compromiso de intentar publicar al menos un material cada año que no provenga de los integrantes de la editorial, en nuestro esfuerzo por difundir obras contemporáneas de Paraguay.";
 
 export function Calls() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fileError, setFileError] = useState("");
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [submitError, setSubmitError] = useState("");
+  const dialogRef = useRef<HTMLDivElement>(null);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+  useEffect(() => {
+    setPageSeo({
+      title: "Convocatoria externa 2026 | Ruido Visual",
+      description:
+        "Convocatoria externa 2026 de Ruido Visual para recibir postulaciones de obras poéticas en formato PDF.",
+      path: "/convocatorias",
+      favicon: "/favicon.png",
+      siteName: "Ruido Visual",
     });
+  }, []);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen]);
+
+  const openModal = () => {
+    setFileError("");
+    setSelectedFileName("");
+    setSubmitError("");
+    setSubmitStatus("idle");
+    setIsModalOpen(true);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    alert("¡Gracias por tu mensaje! Nos pondremos en contacto pronto.");
+  const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
+  const validateFile = (file?: File | null) => {
+    if (!file) {
+      return "Adjuntá la obra en formato PDF.";
+    }
+
+    const isPdf =
+      file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
+    if (!isPdf) {
+      return "El archivo debe estar en formato PDF.";
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      return "El archivo no debe superar los 8 MB.";
+    }
+
+    return "";
+  };
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+
+    setSelectedFileName(file?.name ?? "");
+    setFileError(validateFile(file));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const fileInput = form.elements.namedItem("obra") as HTMLInputElement;
+    const error = validateFile(fileInput.files?.[0]);
+
+    setFileError(error);
+    setSubmitError("");
+
+    if (error) return;
+
+    setSubmitStatus("loading");
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch("/", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar el formulario.");
+      }
+
+      form.reset();
+      setSelectedFileName("");
+      setSubmitStatus("success");
+    } catch {
+      setSubmitStatus("error");
+      setSubmitError(
+        "No pudimos enviar la postulación. Revisá tu conexión e intentá nuevamente."
+      );
+    }
   };
 
   return (
-    <div className="px-6 md:px-12 py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl mb-8" style={{ fontFamily: 'var(--font-serif)' }}>
-          Convocatorias
-        </h1>
-        <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-          Invitamos a escritoras, escritores y artistas a participar en nuestros proyectos editoriales colaborativos. Todas nuestras convocatorias son abiertas, horizontales y sin fines de lucro.
-        </p>
+    <div className="px-6 md:px-12 py-12 md:py-16">
+      <div className="max-w-6xl mx-auto">
+        <header className="mb-10 md:mb-14">
+          <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-4">
+            Convocatorias
+          </p>
+          <h1
+            className="text-4xl md:text-5xl lg:text-7xl tracking-tight"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            Convocatoria externa 2026
+          </h1>
+        </header>
 
-        {/* Active Calls */}
-        <div className="space-y-12 mb-16">
-          {activeCalls.map((call) => (
-            <div key={call.id} className="border border-border p-8 bg-card">
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h2 className="text-2xl mb-2" style={{ fontFamily: 'var(--font-serif)' }}>
-                    {call.title}
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    Fecha límite: {call.deadline}
-                  </p>
-                </div>
-                <span className="px-3 py-1 bg-primary text-primary-foreground text-sm">
+        <section className="border-2 border-foreground bg-background">
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="bg-muted">
+              <img
+                src={COVER_IMAGE}
+                alt="Portada de Convocatoria externa 2026"
+                className="h-full min-h-[360px] w-full object-cover"
+              />
+            </div>
+
+            <div className="p-7 md:p-10 lg:p-14 flex flex-col justify-center">
+              <div className="mb-8">
+                <span className="inline-block border border-foreground px-3 py-1 text-xs uppercase tracking-[0.2em]">
                   Abierta
                 </span>
               </div>
 
-              <div className="space-y-4 mb-6">
-                <p className="leading-relaxed text-muted-foreground">{call.description}</p>
-              </div>
+              <h2
+                className="text-3xl md:text-5xl mb-4 leading-tight"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                Se busca poemario
+              </h2>
 
-              <div className="space-y-3 mb-6">
-                <h3 className="font-medium">Buscamos:</h3>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                  {call.requirements.map((req, index) => (
-                    <li key={index}>{req}</li>
-                  ))}
-                </ul>
-              </div>
+              <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
+                {introText}
+              </p>
 
-              <div className="space-y-3">
-                <h3 className="font-medium">Condiciones:</h3>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                  {call.conditions.map((condition, index) => (
-                    <li key={index}>{condition}</li>
-                  ))}
-                </ul>
-              </div>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <button
+                  type="button"
+                  onClick={openModal}
+                  className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  Postular obra
+                </button>
 
-              <div className="mt-6 pt-6 border-t border-border">
                 <a
-                  href="#"
+                  href={BASES_PDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   download
-                  className="inline-flex items-center gap-2 text-primary hover:underline"
+                  className="inline-flex items-center justify-center gap-3 px-7 py-4 border-2 border-foreground hover:bg-foreground hover:text-background transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  Descargar bases completas (PDF)
+                  Descargar bases y condiciones
                 </a>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        </section>
 
-        {/* Contact Form - Únete a nuestra red */}
-        <div className="border border-border p-8 bg-card">
-          <h2 className="text-2xl mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
-            Únete a nuestra red
-          </h2>
-          <p className="text-muted-foreground mb-8 leading-relaxed">
-            Si te identificas con nuestra visión y quieres formar parte de este proyecto colectivo, escríbenos. Responderemos a tu mensaje en un plazo máximo de 2 semanas.
-          </p>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block mb-2">
-                  Nombre completo *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block mb-2">
-                  Correo electrónico *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block mb-2">
-                Cuéntanos sobre ti y tu interés en Ruido Visual *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-                placeholder="Cuéntanos sobre tu práctica artística, tus intereses y por qué quieres unirte a Ruido Visual..."
-              />
-            </div>
-
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full md:w-auto px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                Enviar mensaje
-              </button>
-            </div>
-
-            <p className="text-sm text-muted-foreground">
-              * Campos obligatorios. Al enviar tu mensaje, aceptas que sea revisado por el colectivo editorial de Ruido Visual.
-            </p>
-          </form>
-        </div>
-
-        {/* Contact Info */}
         <div className="mt-12 text-center py-8 border-t border-border">
-          <p className="text-muted-foreground mb-2">¿Tienes dudas sobre las convocatorias?</p>
+          <p className="text-muted-foreground mb-2">
+            ¿Tenés dudas sobre la convocatoria?
+          </p>
           <a
-            href="mailto:convocatorias@ruidovisual.org"
+            href="mailto:ruidovisual25@gmail.com"
             className="text-primary hover:underline"
           >
-            convocatorias@ruidovisual.org
+            ruidovisual25@gmail.com
           </a>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-foreground/70 px-4 py-6 md:py-10 flex items-center justify-center"
+          onMouseDown={handleBackdropClick}
+        >
+          <div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="convocatoria-form-title"
+            className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-background border-2 border-foreground shadow-xl"
+          >
+            <div className="sticky top-0 z-10 bg-background border-b border-border px-6 md:px-8 py-5 flex items-start justify-between gap-6">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground mb-2">
+                  Formulario de postulación
+                </p>
+                <h2
+                  id="convocatoria-form-title"
+                  className="text-2xl md:text-3xl"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  Convocatoria externa 2026
+                </h2>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Cerrar formulario"
+                className="p-2 hover:bg-secondary transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form
+              name={FORM_NAME}
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              encType="multipart/form-data"
+              onSubmit={handleSubmit}
+              className="px-6 md:px-8 py-8 space-y-6"
+            >
+              <input type="hidden" name="form-name" value={FORM_NAME} />
+              <p className="hidden">
+                <label>
+                  No completar este campo: <input name="bot-field" />
+                </label>
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <Field label="Nombre completo" htmlFor="nombreCompleto">
+                  <input
+                    id="nombreCompleto"
+                    name="nombreCompleto"
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                </Field>
+
+                <Field label="Número de teléfono personal" htmlFor="telefono">
+                  <input
+                    id="telefono"
+                    name="telefono"
+                    type="tel"
+                    required
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                </Field>
+
+                <Field label="Correo electrónico" htmlFor="email">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                </Field>
+
+                <Field label="Cuenta de Instagram" htmlFor="instagram">
+                  <input
+                    id="instagram"
+                    name="instagram"
+                    type="text"
+                    required
+                    placeholder="@usuario"
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                </Field>
+              </div>
+
+              <Field label="Breve descripción biográfica" htmlFor="biografia">
+                <textarea
+                  id="biografia"
+                  name="biografia"
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring resize-y"
+                />
+              </Field>
+
+              <Field label="Título de la obra" htmlFor="tituloObra">
+                <input
+                  id="tituloObra"
+                  name="tituloObra"
+                  type="text"
+                  required
+                  className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                />
+              </Field>
+
+              <Field label="Obra en PDF" htmlFor="obra">
+                <input
+                  id="obra"
+                  name="obra"
+                  type="file"
+                  accept="application/pdf,.pdf"
+                  required
+                  onChange={handleFileChange}
+                  aria-describedby="obra-help obra-error"
+                  className="sr-only"
+                />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                  <label
+                    htmlFor="obra"
+                    className="inline-flex w-full sm:w-auto cursor-pointer items-center justify-center px-5 py-3 bg-foreground text-background hover:bg-foreground/90 transition-colors"
+                  >
+                    Seleccionar archivo
+                  </label>
+                  <span className="min-w-0 max-w-full text-sm text-muted-foreground truncate">
+                    {selectedFileName || "Ningún archivo seleccionado"}
+                  </span>
+                </div>
+                <p id="obra-help" className="mt-2 text-sm text-muted-foreground">
+                  Solo se aceptan archivos PDF de hasta 8 MB.
+                </p>
+                {fileError && (
+                  <p id="obra-error" className="mt-2 text-sm text-primary">
+                    {fileError}
+                  </p>
+                )}
+              </Field>
+
+              <div className="border border-border p-4">
+                <p className="text-xs md:text-[13px] leading-relaxed text-muted-foreground mb-4">
+                  Al enviar este formulario, acepto que Ruido Visual recopile y
+                  utilice mis datos personales exclusivamente para gestionar esta
+                  convocatoria, evaluar la obra presentada, comunicar resultados y
+                  coordinar eventuales instancias editoriales vinculadas al proceso.
+                  Los datos no serán vendidos ni cedidos a terceros ajenos a la
+                  convocatoria. Podré solicitar la eliminación o rectificación de mis
+                  datos escribiendo a ruidovisual25@gmail.com.
+                </p>
+
+                <label className="flex items-start gap-3 text-xs md:text-[13px] leading-relaxed">
+                  <input
+                    type="checkbox"
+                    name="aceptacionDatos"
+                    required
+                    value="Acepto"
+                    className="mt-1 h-4 w-4 accent-foreground"
+                  />
+                  <span>
+                    He leído y acepto el uso de mis datos personales para los fines
+                    de esta convocatoria.
+                  </span>
+                </label>
+              </div>
+
+              <p className="text-sm text-muted-foreground">
+                Antes de enviar tu postulación, revisá que el archivo esté en formato
+                PDF y que los datos de contacto sean correctos.
+              </p>
+
+              {submitStatus === "loading" && (
+                <p className="text-sm" role="status">
+                  Enviando postulación...
+                </p>
+              )}
+
+              {submitStatus === "success" && (
+                <p className="text-sm text-primary" role="status">
+                  Postulación enviada correctamente. Gracias por compartir tu obra
+                  con Ruido Visual.
+                </p>
+              )}
+
+              {submitStatus === "error" && (
+                <p className="text-sm text-primary" role="alert">
+                  {submitError}
+                </p>
+              )}
+
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={submitStatus === "loading"}
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-foreground text-background hover:bg-foreground/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  {submitStatus === "loading"
+                    ? "Enviando postulación..."
+                    : "Enviar postulación"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-const activeCalls = [
-  {
-    id: "convocatoria-publicacion-abierta",
-    title: "Convocatoria de Publicación Abierta",
-    deadline: "Abierta todo el año",
-    description:
-      "Ruido Visual es una editorial independiente, colectiva y autogestionada que surge en el contexto de pocas oportunidades para la difusión de literatura paraguaya. Tomamos el compromiso de intentar publicar al menos un material cada año que no provenga de los integrantes de la editorial, en nuestro esfuerzo por difundir obras contemporáneas de Paraguay.",
-    requirements: [
-      "Obras literarias de autoras y autores contemporáneos de Paraguay",
-      "Textos que respondan a un formato económico de publicación",
-      "Disposición a trabajar en proceso editorial colaborativo",
-      "Compromiso con la difusión del arte y la literatura paraguaya",
-    ],
-    conditions: [
-      "Publicación de una tirada entre 50 y 70 ejemplares",
-      "Costo de venta entre 30.000 y 70.000 guaraníes",
-      "Impresión mayormente en blanco y negro (algunas impresiones a color según presupuesto)",
-      "Libro presillado, sin solapas, con portadas y contraportadas de cartulinas",
-      "Sin registro ISBN de momento",
-      "60% de lo recaudado destinado a la editorial para sostener el proyecto",
-      "40% de lo recaudado para la autora o el autor, una vez cubierto el 60% de la editorial",
-      "5 ejemplares extra divididos entre la autora/autor y el archivo de Ruido Visual",
-      "Al menos dos reuniones entre autora/autor y editorial previo al inicio del proceso",
-      "La editorial se encarga de ilustrar, diagramar, materializar y presentar la obra",
-      "Comunicación constante con la autora/autor para decisiones importantes",
-    ],
-  },
-];
+function Field({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  children: ReactNode;
+}) {
+  return (
+    <div>
+      <label htmlFor={htmlFor} className="block mb-2">
+        {label} *
+      </label>
+      {children}
+    </div>
+  );
+}

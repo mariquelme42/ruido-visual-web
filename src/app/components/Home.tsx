@@ -3,15 +3,18 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Users, Sparkles } from "lucide-react";
 import { useEffect } from "react";
+import { setPageSeo } from "../utils/seo";
 
 export function Home() {
-    useEffect(() => {
-    document.title = "Ruido Visual";
-
-    const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
-    if (favicon) {
-      favicon.href = "/favicon-ruido.png";
-    }
+  useEffect(() => {
+    setPageSeo({
+      title: "Ruido Visual | Editorial colectiva de Paraguay",
+      description:
+        "Ruido Visual es una red editorial colectiva, independiente y autogestionada de Paraguay, con publicaciones, biblioteca digital y archivo visual.",
+      path: "/ruido-visual",
+      favicon: "/favicon.png",
+      siteName: "Ruido Visual",
+    });
   }, []);
   return (
     <div className="relative">
@@ -69,14 +72,13 @@ export function Home() {
               <span>Explorar biblioteca</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            {/*}
             <Link
               to="/convocatorias"
               className="inline-flex items-center justify-center gap-3 px-6 md:px-8 py-3 md:py-4 border-2 border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
               <Sparkles className="w-5 h-5" />
               <span>Convocatorias</span>
-            </Link> */}
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -280,7 +282,7 @@ export function Home() {
       </section>
 
       {/* Open Calls Section - Card Style */}
-      {/*
+      {
       <section className="px-6 md:px-12 py-24">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -308,7 +310,7 @@ export function Home() {
           </motion.div>
         </div>
       </section>
-      */}
+      }
     </div>
   );
 }

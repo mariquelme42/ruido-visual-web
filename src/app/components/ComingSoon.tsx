@@ -1,12 +1,15 @@
 import { useEffect } from "react";
-export function ComingSoon() {
-    useEffect(() => {
-    document.title = "Colectivo Asunción Flores";
+import { setPageSeo } from "../utils/seo";
 
-    const favicon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
-    if (favicon) {
-      favicon.href = "/favicon-colectivo.png";
-    }
+export function ComingSoon() {
+  useEffect(() => {
+    setPageSeo({
+      title: "Colectivo Asunción Flores",
+      description:
+        "Colectivo Asunción Flores es un espacio de creación colectiva en construcción desde Asunción, Paraguay.",
+      path: "/",
+      favicon: "/favicon.png",
+    });
   }, []);
   return (
     <main className="min-h-screen flex flex-col justify-between bg-background text-foreground px-6 py-10">

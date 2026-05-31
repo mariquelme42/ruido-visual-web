@@ -17,7 +17,7 @@ export function Header() {
     { path: "/acerca", label: "Acerca" },
     { path: "/biblioteca", label: "Biblioteca" },
     { path: "/galeria", label: "Galería" },
-    /*{ path: "/convocatorias", label: "Convocatorias" },*/
+    { path: "/convocatorias", label: "Convocatorias" },
   ];
 
   return (
