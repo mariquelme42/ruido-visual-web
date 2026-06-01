@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, MouseEvent, ReactNode } from "react";
 import { Download, Send, X } from "lucide-react";
 import { setPageSeo } from "../utils/seo";
+import {
+  paraguayCitiesByDepartment,
+  paraguayDepartments,
+  type ParaguayDepartment,
+} from "../data/paraguayLocations";
 
 const FORM_NAME = "convocatoria-ruido-visual-2026";
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
@@ -16,11 +21,17 @@ export function Calls() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fileError, setFileError] = useState("");
   const [selectedFileName, setSelectedFileName] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [ciudad, setCiudad] = useState("");
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [submitError, setSubmitError] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
+  const today = new Date().toISOString().split("T")[0];
+  const cityOptions = departamento
+    ? paraguayCitiesByDepartment[departamento as ParaguayDepartment]
+    : [];
 
   useEffect(() => {
     setPageSeo({
@@ -54,6 +65,8 @@ export function Calls() {
   const openModal = () => {
     setFileError("");
     setSelectedFileName("");
+    setDepartamento("");
+    setCiudad("");
     setSubmitError("");
     setSubmitStatus("idle");
     setIsModalOpen(true);
@@ -89,6 +102,26 @@ export function Calls() {
 
     setSelectedFileName(file?.name ?? "");
     setFileError(validateFile(file));
+  };
+
+  const handleDepartamentoChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setDepartamento(event.target.value);
+    setCiudad("");
+    event.target.setCustomValidity("");
+  };
+
+  const clearFieldValidity = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    event.currentTarget.setCustomValidity("");
+  };
+
+  const getBirthDateError = (input: HTMLInputElement) => {
+    if (input.validity.valueMissing) return "Ingresá tu fecha de nacimiento.";
+    if (input.validity.rangeOverflow) {
+      return "La fecha de nacimiento no puede ser futura.";
+    }
+    return "";
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -272,6 +305,24 @@ export function Calls() {
                   />
                 </Field>
 
+                <Field label="Fecha de nacimiento" htmlFor="fechaNacimiento">
+                  <input
+                    id="fechaNacimiento"
+                    name="fechaNacimiento"
+                    type="date"
+                    max={today}
+                    required
+                    onInput={(event) => event.currentTarget.setCustomValidity("")}
+                    onChange={clearFieldValidity}
+                    onInvalid={(event) => {
+                      event.currentTarget.setCustomValidity(
+                        getBirthDateError(event.currentTarget)
+                      );
+                    }}
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  />
+                </Field>
+
                 <Field label="Número de teléfono personal" htmlFor="telefono">
                   <input
                     id="telefono"
@@ -301,6 +352,61 @@ export function Calls() {
                     placeholder="@usuario"
                     className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
                   />
+                </Field>
+
+                <Field label="Departamento" htmlFor="departamento">
+                  <select
+                    id="departamento"
+                    name="departamento"
+                    required
+                    value={departamento}
+                    onChange={handleDepartamentoChange}
+                    onInvalid={(event) => {
+                      event.currentTarget.setCustomValidity(
+                        "Seleccioná tu departamento."
+                      );
+                    }}
+                    className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="">Seleccioná un departamento</option>
+                    {paraguayDepartments.map((department) => (
+                      <option key={department} value={department}>
+                        {department}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                <Field label="Ciudad" htmlFor="ciudad">
+                  <select
+                    key={departamento || "sin-departamento"}
+                    id="ciudad"
+                    name="ciudad"
+                    required
+                    disabled={!departamento}
+                    value={ciudad}
+                    onChange={(event) => {
+                      setCiudad(event.target.value);
+                      event.currentTarget.setCustomValidity("");
+                    }}
+                    onInvalid={(event) => {
+                      event.currentTarget.setCustomValidity(
+                        "Seleccioná tu ciudad."
+                      );
+                    }}
+                    className="w-full px-4 py-3 bg-input-background border border-border disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="">
+                      {departamento
+                        ? "Seleccioná una ciudad"
+                        : "Primero seleccioná un departamento"}
+                    </option>
+                    {cityOptions.map((city) => (
+                      <option key={city} value={city}>
+                        {city}
+                      </option>
+                    ))}
+                  </select>
                 </Field>
               </div>
 
