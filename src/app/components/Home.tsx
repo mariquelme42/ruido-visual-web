@@ -293,18 +293,17 @@ export function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
-              Convocatorias abiertas
+              Convocatorias
             </h2>
             <p className="text-lg md:text-2xl leading-relaxed text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Invitamos a escritoras, escritores y artistas a participar en nuestros proyectos editoriales
-              colaborativos.
+              No hay convocatorias abiertas por el momento. Pronto compartiremos nuevas llamadas editoriales.
             </p>
             <Link
               to="/convocatorias"
               className="inline-flex items-center gap-3 px-10 py-5 bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 text-lg"
             >
               <Sparkles className="w-5 h-5" />
-              <span>Ver convocatorias</span>
+              <span>Ver sección</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
