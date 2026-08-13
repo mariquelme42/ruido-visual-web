@@ -332,6 +332,21 @@ const publications = [
     ],
   },
   {
+    id: "mandua-trans",
+    title: "Mandu'a Trans",
+    author: "Colectivo Mandu'a Trans",
+    year: "2026",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/mandua-trans.jpg",
+    pdf: "/pdfs/amigues/fotolibro-mandua-trans.pdf",
+    description:
+      "«Este fotolibro no busca compasión. Es la prueba de que existimos, de que respiramos, aunque el mundo haya apostado lo contrario. Seguimos vivas, y eso no es un consuelo. Es una advertencia.» — Alejandra Granje. Fotolibro realizado por el colectivo Mandu'a Trans.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
     id: "memorias-del-planeta",
     title: "Memorias del planeta extraño",
     author: "Norma Flores Allende",

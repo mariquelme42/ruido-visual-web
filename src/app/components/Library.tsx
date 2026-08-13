@@ -395,6 +395,15 @@ const books = [
     pdf: "/pdfs/amigues/lineas-de-expresion.pdf",
   },
   {
+    id: "mandua-trans",
+    title: "Mandu'a Trans",
+    author: "Colectivo Mandu'a Trans",
+    year: "2026",
+    type: "Poesía",
+    cover: "/images/library/amigues/mandua-trans.jpg",
+    pdf: "/pdfs/amigues/fotolibro-mandua-trans.pdf",
+  },
+  {
     id: "memorias-del-planeta",
     title: "Memorias del planeta extraño",
     author: "Norma Flores Allende",
