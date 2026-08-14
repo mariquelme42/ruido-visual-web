@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { SensitiveContentGate } from "./SensitiveContentGate";
 import { Download, BookOpen, ArrowLeft } from "lucide-react";
 
 export function PublicationDetail() {
@@ -19,11 +20,13 @@ export function PublicationDetail() {
     );
   }
 
+  const isSensitive = publication.id === "mandua-trans";
+
   const relatedPublications = publications
     .filter((p) => p.id !== id && (p.author === publication.author || p.type === publication.type))
     .slice(0, 3);
 
-  return (
+  const content = (
     <div className="px-6 md:px-12 py-16">
       <div className="max-w-7xl mx-auto">
         {/* Back Link */}
@@ -41,8 +44,15 @@ export function PublicationDetail() {
           <div className="aspect-[3/4] bg-muted overflow-hidden">
             <ImageWithFallback
               src={publication.cover}
-              alt={publication.title}
-              className="w-full h-full object-cover"
+              alt={
+                isSensitive
+                  ? "Portada del fotolibro documental Mandu'a Trans: registro de memoria de mujeres trans durante la dictadura paraguaya"
+                  : publication.title
+              }
+              className={`w-full h-full object-cover${isSensitive ? " select-none" : ""}`}
+              draggable={!isSensitive}
+              onContextMenu={isSensitive ? (e) => e.preventDefault() : undefined}
+              onDragStart={isSensitive ? (e) => e.preventDefault() : undefined}
             />
           </div>
 
@@ -118,6 +128,12 @@ export function PublicationDetail() {
       </div>
     </div>
   );
+
+  if (isSensitive) {
+    return <SensitiveContentGate title={publication.title}>{content}</SensitiveContentGate>;
+  }
+
+  return content;
 }
 
 const publications = [
@@ -332,11 +348,26 @@ const publications = [
     ],
   },
   {
+    id: "el-lenguaje-de-las-piedras",
+    title: "El lenguaje de las piedras",
+    author: "Andrés Urzúa",
+    year: "2026",
+    type: "Poesía",
+    collection: "Amigues ruidoses",
+    cover: "/images/library/amigues/el-lenguaje.jpg",
+    pdf: "/pdfs/amigues/el-lenguaje-de-las-piedras.pdf",
+    description:
+      "Este libro es una autopublicación del poeta chileno Andrés Urzúa. Desde la figura de la piedra, debate sobre el lenguaje, el silencio, las desapariciones, las movilizaciones, y nuestra relación con nuestro entorno y la naturaleza.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
     id: "mandua-trans",
     title: "Mandu'a Trans",
     author: "Colectivo Mandu'a Trans",
     year: "2026",
-    type: "Poesía",
+    type: "Fotolibro",
     collection: "Amigues ruidoses",
     cover: "/images/library/amigues/mandua-trans.jpg",
     pdf: "/pdfs/amigues/fotolibro-mandua-trans.pdf",
