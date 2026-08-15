@@ -337,6 +337,14 @@ const features = [
 
 const featuredBooks = [
   {
+    id: "bitacora-suburbana-a5",
+    title: "Bitácora Suburbana A5",
+    author: "Alina Cantero",
+    year: "2026",
+    cover: "/images/library/bitacora-suburbana-a5.jpeg",
+    pdf: "/pdfs/bitácora-suburbana-a5.pdf",
+  },
+  {
     id: "nunca-tuve-un-titulo",
     title: "Nunca tuve un título",
     author: "Ruido Visual",
@@ -351,13 +359,5 @@ const featuredBooks = [
     year: "2025",
     cover: "/images/library/croissant-tete.png",
     pdf: "/pdfs/croissant-tete.pdf",
-  },
-  {
-    id: "atajame-un-ratito",
-    title: "Atajame un ratito esta desaparición",
-    author: "Miel",
-    year: "2025",
-    cover: "/images/library/atajame-un-ratito.png",
-    pdf: "/pdfs/atajame-un-ratito.pdf",
   },
 ];

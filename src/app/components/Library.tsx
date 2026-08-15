@@ -305,6 +305,15 @@ const books = [
     pdf: "/pdfs/el-bulbo-raquideo.pdf",
   },
   {
+    id: "bitacora-suburbana-a5",
+    title: "Bitácora Suburbana A5",
+    author: "Alina Cantero",
+    year: "2026",
+    type: "Poesía",
+    cover: "/images/library/bitacora-suburbana-a5.jpeg",
+    pdf: "/pdfs/bitácora-suburbana-a5.pdf",
+  },
+  {
     id: "1989",
     title: "1989",
     author: "Norma Flores Allende",

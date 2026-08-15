@@ -183,6 +183,21 @@ const publications = [
     ],
   },
   {
+    id: "bitacora-suburbana-a5",
+    title: "Bitácora Suburbana A5",
+    author: "Alina Cantero",
+    year: "2026",
+    type: "Poesía",
+    collection: "Ruido Visual",
+    cover: "/images/library/bitacora-suburbana-a5.jpeg",
+    pdf: "/pdfs/bitácora-suburbana-a5.pdf",
+    description:
+      "En esta bitácora, Alina rehabita la ciudad, garabatea los recuerdos con dibujos y palabras, descifra los códigos ocultos en las calles y paredes, dice y traza los lugares y no-lugares en los que vivió, en los que vivimos, boceta la infinidad de reminiscencias y lamentos. Todo esto, los pasillos, los nombres y las fechas, toda la infinidad cabe en tamaño A5.",
+    excerpt: [
+      "",
+    ],
+  },
+  {
     id: "nunca-tuve-un-titulo",
     title: "Nunca tuve un título",
     author: "Ruido Visual",
