@@ -245,10 +245,10 @@ export function Calls() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
-                <Field label="Nombre completo" htmlFor="nombreCompleto">
+                <Field label="Nombre completo" htmlFor="name">
                   <input
-                    id="nombreCompleto"
-                    name="nombreCompleto"
+                    id="name"
+                    name="name"
                     type="text"
                     required
                     className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
