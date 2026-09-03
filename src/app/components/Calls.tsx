@@ -346,19 +346,13 @@ export function Calls() {
                 label="¿Vas a poder participar de los cuatro talleres poéticos? (Domingos 4, 11, 18 y 25 de octubre, de 9 a 11 h)"
                 htmlFor="disponibilidad"
               >
-                <select
+                <input
                   id="disponibilidad"
                   name="disponibilidad"
+                  type="text"
                   required
-                  defaultValue=""
                   className="w-full px-4 py-3 bg-input-background border border-border focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  <option value="" disabled>
-                    Seleccioná una opción
-                  </option>
-                  <option value="Sí">Sí</option>
-                  <option value="No">No</option>
-                </select>
+                />
               </Field>
 
               <Field
