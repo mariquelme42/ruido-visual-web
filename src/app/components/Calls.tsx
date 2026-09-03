@@ -238,11 +238,11 @@ export function Calls() {
               className="px-6 md:px-8 py-8 space-y-6"
             >
               <input type="hidden" name="form-name" value={FORM_NAME} />
-              <p className="hidden">
-                <label>
-                  No completar este campo: <input name="bot-field" />
-                </label>
-              </p>
+              <input
+                type="hidden"
+                name="subject"
+                value="Nueva postulación - Talleres Ruidosos Caaguazú"
+              />
 
               <div className="grid md:grid-cols-2 gap-6">
                 <Field label="Nombre completo" htmlFor="name">
@@ -445,6 +445,12 @@ export function Calls() {
                   {submitError}
                 </p>
               )}
+
+              <p className="hidden">
+                <label>
+                  No completar este campo: <input name="bot-field" />
+                </label>
+              </p>
 
               <div className="pt-2">
                 <button
