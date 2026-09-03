@@ -296,7 +296,7 @@ export function Home() {
               Convocatorias
             </h2>
             <p className="text-lg md:text-2xl leading-relaxed text-muted-foreground mb-10 max-w-2xl mx-auto">
-              No hay convocatorias abiertas por el momento. Pronto compartiremos nuevas llamadas editoriales.
+              Talleres Ruidosos Caaguazú: postulá hasta el domingo 13 de septiembre a los talleres poéticos gratuitos de octubre.
             </p>
             <Link
               to="/convocatorias"
