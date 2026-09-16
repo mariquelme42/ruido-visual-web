@@ -4,8 +4,11 @@ import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Users, Sparkles } from "lucide-react";
 import { useEffect } from "react";
 import { setPageSeo } from "../utils/seo";
+import { convocatorias } from "../data/convocatorias";
 
 export function Home() {
+  const featuredConvocatoria = convocatorias[0];
+
   useEffect(() => {
     setPageSeo({
       title: "Ruido Visual | Editorial colectiva de Paraguay",
@@ -293,10 +296,10 @@ export function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: 'var(--font-serif)' }}>
-              Convocatorias
+              {featuredConvocatoria.title}
             </h2>
             <p className="text-lg md:text-2xl leading-relaxed text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Talleres Ruidosos Caaguazú: postulá hasta el domingo 13 de septiembre a los talleres poéticos gratuitos de octubre.
+              {featuredConvocatoria.summary}
             </p>
             <Link
               to="/convocatorias"
