@@ -18,8 +18,8 @@ export const convocatorias: Convocatoria[] = [
     status: "abierta",
     title: "Residencia Poética Ruidosa 2026",
     summary:
-      "Residencia gratuita para 20 poetas de Asunción, Central, Alto Paraná, Caaguazú, Itapúa, Guairá y Ñeembucú. Del 20 al 22 de noviembre en Escobar. Postulá hasta el 30 de septiembre.",
-    coverImage: "/images/convocatorias/convocatoria-2.jpeg",
+      "Residencia gratuita para 20 poetas de Asunción, Central, Alto Paraná, Caaguazú, Itapúa, Guairá y Ñeembucú. Del 20 al 22 de noviembre en Escobar. Convocatoria extendida: postulá hasta el 7 de octubre.",
+    coverImage: "/images/convocatorias/convocatoria-2.png",
     coverAlt: "Afiche de la Residencia Poética Ruidosa 2026",
     basesUrl: "/pdfs/convocatorias/residencia-poetica-ruidosa-2026-bases-y-condiciones.pdf",
   },
